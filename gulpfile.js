@@ -57,7 +57,7 @@ gulp.task('browser-sync', function() {
 gulp.task('images', function(){
 	gulp.src('app/images/**/*.+(png|jpg|gif|svg)')
 	.pipe(cache(imagemin()))
-	.pipe(gulp.dest('dist/images'))
+	//.pipe(gulp.dest('dist/images'))
 });
 
 //DEFAULT

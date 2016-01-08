@@ -1,0 +1,17 @@
+// Normalize, Box-Model, Clearfix
+@import 'setup';
+
+h1 {
+	font-style: bold;
+	font-size: 50px;
+	color: blue;
+}
+
+h2 {
+	color: #fff;
+	font-size: 80px;
+}
+
+header {
+	background: #FF00FF;
+}

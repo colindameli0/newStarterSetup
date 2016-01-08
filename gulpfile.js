@@ -27,6 +27,13 @@ gulp.task('html', function(){
 	.pipe(reload({stream:true}));
 });
 
+//BUILD TASK
+//Task to create build directory for all files
+gulp.task('build:copy', function(){
+	return gulp.src('app/**/*/')
+	.pipe(gulp.dest('build'))
+});
+
 //WATCH TASK
 gulp.task('watch', function(){
 	gulp.watch('app/js/**/*.js', ['scripts']);

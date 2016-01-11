@@ -14,7 +14,7 @@ var config = {
 
 //REQUIRED
 var gulp    	 = require('gulp'),
-	rename  	 = require('gulp-rename'),
+    rename  	 = require('gulp-rename'),
 	browserSync  = require('browser-sync'),
 	reload       = browserSync.reload,
 	sass    	 = require('gulp-sass'),
@@ -24,7 +24,6 @@ var gulp    	 = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'), 
 	del          = require('del'),
     uglify  	 = require('gulp-uglify');
-    
 
 //LOG ERROR
 function errorlog(err){

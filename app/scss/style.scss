@@ -1,17 +1,28 @@
+// IMPORTS =============================================================
+
 // Normalize, Box-Model, Clearfix
 @import 'setup';
 
-h1 {
-	font-style: bold;
-	font-size: 50px;
-	color: blue;
+
+
+
+
+
+
+
+// MEDIA QUERIES =======================================================
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+
 }
 
-h2 {
-	color: #fff;
-	font-size: 80px;
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+
 }
 
-header {
-	background: #FF00FF;
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
 }

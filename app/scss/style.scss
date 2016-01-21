@@ -1,14 +1,25 @@
 // IMPORTS =============================================================
 
-// Normalize, Box-Model, Clearfix
 @import 'setup';
 
+// DEFAULTS ============================================================
+
+html {font-size: 62.5%;}
+body {font-size: 1.4rem;}
+a:hover, a:active {outline: 0;}
+nav a[href]:not([class]) {text-decoration: none;color: #222;}
+
+// VARIABLES ============================================================
+
+
+// MAIN CONTENT =========================================================
 
 
 
-
-
-
+/****** header *********/
+/****** navigation *********/
+/****** main content *********/
+/****** footer *********/
 
 // MEDIA QUERIES =======================================================
 

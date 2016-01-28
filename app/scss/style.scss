@@ -1,23 +1,46 @@
 // IMPORTS =============================================================
 
 @import 'setup';
+@import 'typography';
 
 // DEFAULTS ============================================================
 
 html {font-size: 62.5%;}
 body {font-size: 1.4rem;}
+div.wrapper {width: 1440px; margin: 0 auto; max-width: 90%}
 a:hover, a:active {outline: 0;}
 nav a[href]:not([class]) {text-decoration: none;color: #222;}
+a.menu-trigger > .fa-bars, .fa-times {font-size: 27px; color: #222;}
 
-// VARIABLES ============================================================
+/****** navigation *********/
+nav ul {
+	padding: 0;
+	border: 1px solid blue;
+	li {
+		list-style: none;
+		float: right;
+		padding: 0 10px;
+		font-size: 1.8rem;
+		a {
+			text-transform: uppercase;
+		}
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+}
 
+/****** mobile navigation *********/
+a.menu-trigger {display: none;}
+
+// TYPOGRAPHY ============================================================
+
+h1, h2, h3, h4, h5, h6 {font-family: $primaryFont;}
+p {font-family: $secondaryFont;}
 
 // MAIN CONTENT =========================================================
 
-
-
 /****** header *********/
-/****** navigation *********/
 /****** main content *********/
 /****** footer *********/
 
@@ -35,5 +58,22 @@ nav a[href]:not([class]) {text-decoration: none;color: #222;}
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-
+	a.menu-trigger {display: block; text-align: right; margin-top: 10px;}
+	nav ul {
+		display: none;
+		border: none;
+		margin-bottom: 50px;
+		li {
+			float: none;
+			text-align: center;
+			padding: 0;
+			a {
+				display: block;
+				width: 100%;
+				cursor: pointer;
+				padding: 10px 0;
+				border-bottom: 1px solid #222;
+			}
+		}
+	}
 }

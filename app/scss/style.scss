@@ -3,26 +3,38 @@
 @import 'setup';
 @import 'typography';
 
+// TYPOGRAPHY ============================================================
+
+h1, h2, h3, h4, h5, h6 {font-family: $primaryFont;}
+p {font-family: $secondaryFont;}
+
 // DEFAULTS ============================================================
 
 html {font-size: 62.5%;}
-body {font-size: 1.4rem;}
+body {font-size: 1.4rem; font-family: $secondaryFont; display: flex; flex-direction: column;}
 div.wrapper {width: 1440px; margin: 0 auto; max-width: 90%}
 a:hover, a:active {outline: 0;}
-nav a[href]:not([class]) {text-decoration: none;color: #222;}
+a[href]:not([class]) {text-decoration: none;color: #222;}
 a.menu-trigger > .fa-bars, .fa-times {font-size: 27px; color: #222;}
+ul {list-style: none; margin: 0; padding: 0;}
+
+// MAIN CONTENT =========================================================
 
 /****** navigation *********/
+nav {
+	opacity: .95;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
 nav ul {
-	padding: 0;
-	border: 1px solid blue;
+	margin: 0 0 10px 0;
+	padding: 10px 0;
 	li {
-		list-style: none;
 		float: right;
 		padding: 0 10px;
 		font-size: 1.8rem;
 		a {
 			text-transform: uppercase;
+			font-family: $primaryFont;
 		}
 		&:first-child {
 			padding-left: 0;
@@ -33,16 +45,41 @@ nav ul {
 /****** mobile navigation *********/
 a.menu-trigger {display: none;}
 
-// TYPOGRAPHY ============================================================
-
-h1, h2, h3, h4, h5, h6 {font-family: $primaryFont;}
-p {font-family: $secondaryFont;}
-
-// MAIN CONTENT =========================================================
-
 /****** header *********/
-/****** main content *********/
+
+/****** main *********/
+
+h1 {font-size: 3.4rem; letter-spacing: 1.2px}
+
 /****** footer *********/
+footer .fa {font-size: 2.6rem;}
+footer {
+	.copy {
+		width: 50%;
+		float: left;
+		p {
+			line-height: 1.25;
+			font-size: 1.6rem;
+			margin: 0;
+		}
+	}
+	ul {
+		float: right;
+		width: 50%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		li {
+			float: right;
+			padding: 0 15px;
+			.fa {
+				line-height: 1.25;
+			}
+		}
+	}
+}
+
+	
 
 // MEDIA QUERIES =======================================================
 
@@ -58,7 +95,8 @@ p {font-family: $secondaryFont;}
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-	a.menu-trigger {display: block; text-align: right; margin-top: 10px;}
+	a.menu-trigger {display: block; text-align: right; margin-top: 10px; padding-right: 10px;}
+	nav {box-shadow: none;}
 	nav ul {
 		display: none;
 		border: none;
@@ -76,4 +114,17 @@ p {font-family: $secondaryFont;}
 			}
 		}
 	}
+	
+	footer {
+		ul {
+			width: 100%;
+			justify-content: center;
+		}
+		div.copy {
+			float: none;
+			width: 100%;
+			text-align: center;
+		}
+	}
 }
+

@@ -9,4 +9,10 @@ $(document).ready(function() {
     	$(this).find('i').toggleClass('fa-bars fa-times');
     })
 
+    //COPYRIGHT UPDATE
+    var theYear = new Date();
+    var update = theYear.getFullYear();
+    $('#year').html(update);
 });
+
+

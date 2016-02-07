@@ -1,6 +1,5 @@
 var config = {
 	jsConcatFiles: [
-		'./app/js/module1.js', 
 		'./app/js/main.js'
 	], 
 	buildFilesFoldersRemove:[
@@ -24,6 +23,8 @@ var gulp    	 = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'), 
 	del          = require('del'),
     uglify  	 = require('gulp-uglify');
+    notify 	  	 = require("gulp-notify");
+    //gulp-load-plugins
 
 //LOG ERROR
 function errorlog(err){
@@ -41,7 +42,6 @@ gulp.task('scripts', function(){
 		.on('error', errorlog)
 		.pipe(rename('app.min.js'))
 		.pipe(gulp.dest('./app/js/'))
-
 		.pipe(reload({stream:true})); 
 });
 
@@ -49,6 +49,42 @@ gulp.task('scripts', function(){
 gulp.task('html', function(){
 	gulp.src('app/**/*.html')
 	.pipe(reload({stream:true}));
+});
+
+
+//SASS TASK
+gulp.task('sass', function(){
+	gulp.src('app/scss/style.scss')
+		.pipe(sass({outputStyle: 'compressed'}))
+		.on("error", notify.onError(function (error) {
+		  return error.message;
+		}))
+		.pipe(notify("SaSS!"))
+		.pipe(autoprefixer('last 2 versions'))
+		.pipe(gulp.dest('app/css'))
+		.pipe(reload({stream:true}));
+});
+
+//WATCH TASK
+gulp.task('watch', function(){
+	gulp.watch('app/js/**/*.js', ['scripts']);
+	gulp.watch('app/scss/**/*.scss', ['sass']);
+	gulp.watch('app/**/*.html', ['html']);
+});
+
+//Browser-Sync
+gulp.task('browser-sync', function() {
+	browserSync({
+		server:{
+			baseDir: "./app/"
+		}
+	});
+});
+
+//IMAGE OPT
+gulp.task('images', function(){
+	gulp.src('app/images/**/*.+(png|jpg|gif|svg)')
+	.pipe(cache(imagemin()))
 });
 
 //BUILD TASK
@@ -72,38 +108,7 @@ gulp.task('build:remove', ['build:copy'], function(cb){
 
 gulp.task('build', ['build:copy', 'build:remove']);
 
-//WATCH TASK
-gulp.task('watch', function(){
-	gulp.watch('app/js/**/*.js', ['scripts']);
-	gulp.watch('app/scss/**/*.scss', ['sass']);
-	gulp.watch('app/**/*.html', ['html']);
-});
 
-//SASS TASK
-gulp.task('sass', function(){
-	gulp.src('app/scss/style.scss')
-		.pipe(sass({outputStyle: 'compressed'}))
-		.on('error', errorlog)
-		.pipe(autoprefixer('last 2 versions'))
-		.pipe(gulp.dest('app/css'))
-
-		.pipe(reload({stream:true}));
-});
-
-//Browser-Sync
-gulp.task('browser-sync', function() {
-	browserSync({
-		server:{
-			baseDir: "./app/"
-		}
-	});
-});
-
-//IMAGE OPT
-gulp.task('images', function(){
-	gulp.src('app/images/**/*.+(png|jpg|gif|svg)')
-	.pipe(cache(imagemin()))
-});
 
 //DEFAULT
 gulp.task('default', ['scripts', 'sass', 'html', 'browser-sync', 'watch']);
